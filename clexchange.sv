@@ -25,7 +25,7 @@ class exchanger;
    
    function void display();
       if(result_v != 0)
-     $display("%s: %f\n%s: %f\n",target,amount, result, result_v);
+        $display("\n%s: %f ==> %s: %f ",target,amount, result, result_v);
       else
         $display("Wrong String Value!! Try again.\n");
 
