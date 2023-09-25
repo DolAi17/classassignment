@@ -27,7 +27,7 @@ class exchanger;
       if(result_v != 0)
      $display("%s: %f\n%s: %f\n",target,amount, result, result_v);
       else
-     $display("Wrong String Value!! Try again.");
+        $display("Wrong String Value!! Try again.\n");
 
    endfunction
 
@@ -61,17 +61,19 @@ initial begin
 
   ex.getdata(10,"Dollar","Euro");
   ex.judge();
-   ex.display();
-   #1
+  ex.display();
   ex.getdata(10,"Euro","Dollar");
   ex.judge();
-   ex.display(); 
+  ex.display(); 
   WYex.getdata(10,"Won","Yen");
   WYex.judge();
-   WYex.display();
+  WYex.display();
   WYex.getdata(10,"Yen","Won");
   WYex.judge();
-   WYex.display();
+  WYex.display();
+  WYex.getdata(10,"You","we");
+  WYex.judge();
+  WYex.display();
 end
 
 endmodule
