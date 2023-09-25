@@ -1,21 +1,35 @@
 module a;
 
-function get_Euro_from_Dollar(real amount);
+function EtoD(real amount);
 	real euro;
 	euro = 0.93871 * amount;
 	$display("Dollar %f = Euro %f", amount, euro);
 endfunction
 
-function get_Dollar_from_Euro(real amount);
+function DtoE(real amount);
 	real dollar;
 	dollar =amount / 0.93871;
     $display("Euro %f = Dollar %f", amount, dollar);
 endfunction
+
+function WtoY(real amount);
+	real won;
+	won = 9.00870 * amount;
+	$display("Yen %f = Won %f", amount, won);
+endfunction
+
+function YtoW(real amount);
+	real yen;
+	yen = amount / 9.00870;
+	$display("Won %f = Yen %f", amount, yen);
+endfunction
   
   initial begin
     
-    get_Euro_from_Dollar(10);
-    get_Dollar_from_Euro(10);
+    EtoD(10);
+    DtoE(10);
+    WtoY(10);
+    YtoW(10);
   end
     
 endmodule
