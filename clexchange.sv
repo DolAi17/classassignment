@@ -8,13 +8,13 @@ class exchanger;
    string target;
    string result;
 
-  function real getdata(real m, string t="", string r="");
+  function getdata(real m, string t="", string r="");
       amount=m;
       target=t;
       result=r;
    endfunction
 
-   function judge()
+  function judge();
       if(target == "Dollar")
          result_v = `EperD * amount;
       else if(target == "Euro")
@@ -33,19 +33,45 @@ class exchanger;
 
 endclass
 
+
+class WYexchanger extends exchanger;
+
+  function judge();     
+      if(target == "Yen")
+         result_v = `WperY * amount;
+      else if(target == "Won")
+         result_v = amount / `WperY;
+      else
+         result_v = 0;
+   endfunction
+endclass
+
+
+
+
 module classEX;
  
   exchanger ex;
+  WYexchanger WYex;
+
 initial begin
   
    ex=new;
+   WYex=new;
+
   ex.getdata(10,"Dollar","Euro");
   ex.judge();
    ex.display();
    #1
   ex.getdata(10,"Euro","Dollar");
   ex.judge();
-   ex.display();
+   ex.display(); 
+  WYex.getdata(10,"Won","Yen");
+  WYex.judge();
+   WYex.display();
+  WYex.getdata(10,"Yen","Won");
+  WYex.judge();
+   WYex.display();
 end
 
 endmodule
