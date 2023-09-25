@@ -12,25 +12,25 @@ end
 function EtoD(real amount);
 	real euro;
 	euro = EperD * amount;
-	$display("Dollar %f = Euro %f", amount, euro);
+   $display("Dollar: %f\nEuro: %f\n", amount, euro);
 endfunction
 
 function DtoE(real amount);
 	real dollar;
 	dollar =amount / EperD;
-    $display("Euro %f = Dollar %f", amount, dollar);
+   $display("Euro: %f\nDollar: %f\n", amount, dollar);
 endfunction
 
 function WtoY(real amount);
 	real won;
 	won = WperY * amount;
-	$display("Yen %f = Won %f", amount, won);
+   $display("Yen: %f\nWon: %f\n", amount, won);
 endfunction
 
 function YtoW(real amount);
 	real yen;
 	yen = amount / WperY;
-	$display("Won %f = Yen %f", amount, yen);
+   $display("Won: %f\nYen: %f\n", amount, yen);
 endfunction
   
   initial begin
