@@ -1,26 +1,35 @@
 module a;
 
+real EperD, WperY;
+  
+initial begin
+
+	EperD = 0.93871;
+	WperY = 9.00870;
+
+end
+  
 function EtoD(real amount);
 	real euro;
-	euro = 0.93871 * amount;
+	euro = EperD * amount;
 	$display("Dollar %f = Euro %f", amount, euro);
 endfunction
 
 function DtoE(real amount);
 	real dollar;
-	dollar =amount / 0.93871;
+	dollar =amount / EperD;
     $display("Euro %f = Dollar %f", amount, dollar);
 endfunction
 
 function WtoY(real amount);
 	real won;
-	won = 9.00870 * amount;
+	won = WperY * amount;
 	$display("Yen %f = Won %f", amount, won);
 endfunction
 
 function YtoW(real amount);
 	real yen;
-	yen = amount / 9.00870;
+	yen = amount / WperY;
 	$display("Won %f = Yen %f", amount, yen);
 endfunction
   
