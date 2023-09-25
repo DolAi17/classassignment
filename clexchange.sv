@@ -1,14 +1,27 @@
+`define EperD 0.93871
+`define WperY 9.00870
+
+
 class exchanger;
    real amount;
-   real euro;
+   real result_v;
+   string target;
+   string result;
 
-   function real exchanging(real m);
+  function real getdata(real m, string t="", string r="");
       amount=m;
-      euro = 0.93871 * amount;
+      target=t;
+      result=r;
+      if(target == "Dollar")
+         result_v = `EperD * amount;
+      else if(target == "Euro")
+         result_v = amount / `EperD;
+      else
+         result_v = 0;
    endfunction
    
    function void display();
-      $display("Dollar: %f\nEuro: %f\n", amount, euro);
+     $display("%s: %f\n%s: %f\n",target,amount, result, result_v);
    endfunction
 
 endclass
@@ -19,10 +32,11 @@ module classEX;
 initial begin
   
    ex=new;
-   ex.exchanging(10);
+  ex.getdata(10,"Dollar","Euro");
+   ex.display();
+   #1
+  ex.getdata(10,"Euro","Dollar");
    ex.display();
 end
-
-
 
 endmodule
